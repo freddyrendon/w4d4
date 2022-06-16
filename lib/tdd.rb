@@ -47,5 +47,27 @@ class Array
      end 
 end
 
-prices = [7, 1, 5, 3, 6, 4]
-p prices.Stock_picker
+class Hanoi
+    attr_accessor :arr1, :arr2, :arr3
+    def initialize(num)
+        raise ArgumentError if !num.is_a? Integer
+        @arr1 = []
+        @arr2 = []
+        @arr3 = []
+        populate(num)
+    end
+
+    def populate(num)
+        arr = (0...num).to_a.shuffle
+        arr.each_with_index do |num, idx|
+            if idx % 2 == 0
+                @arr1 << num
+            elsif idx % 3 == 0 
+                @arr2 << num 
+            else 
+                @arr3 << num 
+            end 
+        end  
+              
+    end
+end

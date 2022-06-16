@@ -42,9 +42,37 @@ describe Array do
                 expect(prices.Stock_picker).to eq([1,4])
             end 
             it "return an array that sorted" do 
+                prices = [7, 1, 5, 3, 6, 4] 
                 expect(prices.Stock_picker[0] < prices.Stock_picker[1]).to be(true)
              end
         end 
     end
+end
 
+describe Hanoi do
+    subject(:hanoi) { Hanoi.new(3) }
+
+    describe '#initialize' do
+        it "initializes a number" do
+            expect { Hanoi.new(4) }.to_not raise_error
+            expect { Hanoi.new("not a number") }.to raise_error(ArgumentError)
+        end
+        it "initializes @arr1 instance variables" do
+            expect(hanoi.arr1.is_a? Array).to be(true)
+        end
+        it "initializes @arr2 instance variables" do
+            expect(hanoi.arr2.is_a? Array).to be(true)
+        end
+        it "initializes @arr3 instance variables" do
+            expect(hanoi.arr3.is_a? Array).to be(true)
+        end
+        it "it should populate all three arrays with random unique numbers" do 
+            array = hanoi.arr1 + hanoi.arr2 + hanoi.arr3
+            expect(array).to eq(array.uniq)
+        end
+        it "it should populate a total of num numbers" do
+             array = hanoi.arr1 + hanoi.arr2 + hanoi.arr3
+            expect(array.length).to eq(3)
+        end
+    end
 end
